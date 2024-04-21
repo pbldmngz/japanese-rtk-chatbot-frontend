@@ -1,0 +1,25 @@
+.sentence {
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: normal;
+}
+
+.system-message-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 95%;
+    margin-bottom: 0.5rem;
+
+    .system-message {
+        text-align: left;
+        padding: 0.5rem;
+        padding-left: 3rem;
+        padding-right: 2rem;
+        border-radius: 2.5rem;
+        border-bottom-left-radius: 0rem;
+        border: 1px solid #ccc;
+
+        // background-color: #ccc;
+        color: white;
+    }
+}

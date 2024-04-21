@@ -1,0 +1,19 @@
+.message-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 0.5rem;
+
+    .user-message {
+        text-align: right;
+        padding: 0.5rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border: 1px solid #ccc;
+        border-radius: 2.5rem;
+        border-bottom-right-radius: 0rem;
+
+        background-color: #ccc;
+        color: black;
+    }
+}

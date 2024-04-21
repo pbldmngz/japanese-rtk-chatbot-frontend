@@ -1,0 +1,19 @@
+.word-wrapper {
+    display: flex;
+    color: white;
+    margin-right: 1rem;
+}
+
+.character-wrapper {
+    display: flex;
+    color: lightslategrey;
+    margin-right: 1rem;
+}
+
+.is-known-kanji {
+    color: red;
+}
+
+.is-unknown-kanji {
+    color: lightgreen;
+}

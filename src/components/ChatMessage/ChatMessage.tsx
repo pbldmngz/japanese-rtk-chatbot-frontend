@@ -17,8 +17,13 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, lastElement, index, 
     const endRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (endRef.current) {
+            endRef.current.scrollTop = endRef.current.scrollHeight;
+        }
         if (lastElement) {
-            endRef.current?.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                endRef.current?.scrollIntoView({ behavior: 'smooth' });
+            }, 0);
         }
     }, [lastElement]);
 

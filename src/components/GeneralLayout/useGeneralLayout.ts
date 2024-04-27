@@ -2,26 +2,7 @@ import { useContext, useState } from 'react';
 import { GeneralContext } from 'src/GeneralContext';
 import * as wanakana from 'wanakana';
 
-interface GeneralLayoutState {
-    username: string;
-    setUsername: React.Dispatch<React.SetStateAction<string>>;
-    proficiency: number;
-    setProficiency: React.Dispatch<React.SetStateAction<number>>;
-    rtkLevel: number;
-    setRtkLevel: React.Dispatch<React.SetStateAction<number>>;
-    message: string;
-    setMessage: React.Dispatch<React.SetStateAction<string>>;
-    isHiragana: boolean;
-    setIsHiragana: React.Dispatch<React.SetStateAction<boolean>>;
-    wordSeparation: number;
-    setWordSeparation: React.Dispatch<React.SetStateAction<number>>;
-    messageLog: Message[];
-    selectedWord: SeparateElements;
-    toggleKanjiFunction: () => void;
-    handleSendMessage: () => void;
-    handleEnterSendMessage: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-    handleSystemMessage: (message: string) => void;
-}
+
 
 export function useGeneralLayout(): GeneralLayoutState {
     const [username, setUsername] = useState('Test User');

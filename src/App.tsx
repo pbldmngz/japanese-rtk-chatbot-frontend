@@ -1,7 +1,28 @@
-import GeneralLayout from 'src/components/GeneralLayout/GeneralLayout'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import GeneralLayout from 'src/components/GeneralLayout/GeneralLayout';
+import Setup from 'src/components/Setup/Setup';
+import { useGeneralLayout } from 'src/components/GeneralLayout/useGeneralLayout';
 
 function App() {
-  return <GeneralLayout />
+  const layoutHook = useGeneralLayout();
+
+  return (
+    <Routes>
+      <Route
+        path="/setup"
+        element={
+          <Setup layoutHook={layoutHook} />
+        }
+      />
+      <Route
+        path="/chat"
+        element={
+          <GeneralLayout layoutHook={layoutHook} />
+        }
+      />
+      <Route path="*" element={<Navigate to="/chat" />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;

@@ -5,25 +5,15 @@
     padding: 20px;
 }
 
-.sidebar {
-    margin-right: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    min-width: 200px;
-
-    input,
-    select {
-        margin-bottom: 10px;
-        width: 100%;
-    }
-}
-
 .chat-area {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+        max-height: 90vh;
+    }
 }
 
 .selected-word {
@@ -36,6 +26,12 @@
     border: 1px solid #ccc;
     gap: 0.5rem;
 
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        height: 15rem;
+    }
+
     .selected-word-details {
         font-size: 1.5rem;
         display: flex;
@@ -45,6 +41,13 @@
         justify-content: space-evenly;
         width: 80%;
 
+        @media (max-width: 768px) {
+            flex-direction: column;
+            width: 100%;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
         .half {
             width: 50%;
             display: flex;
@@ -53,6 +56,24 @@
             justify-content: space-evenly;
             gap: 1rem;
             height: 100%;
+
+            @media (max-width: 768px) {
+                width: 100%;
+                gap: 0.5rem;
+                height: auto;
+            }
+        }
+    }
+
+    .meaning {
+        @media (max-width: 768px) {
+            height: 6rem !important;
+        }
+    }
+
+    .element-word {
+        @media (max-width: 768px) {
+            height: 2rem !important;
         }
     }
 
@@ -63,13 +84,49 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @media (max-width: 768px) {
+            width: 90%;
+        }
+    }
+
+    .superior-button-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20%;
+        border-radius: 0;
+        border: 1px dotted #ccc;
+        gap: 0.5rem;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            // margin-top: auto;
+        }
     }
 
     .button-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 0;
+        width: 80%;
+    }
+
+    .setup-button {
         width: 20%;
+    }
+}
+
+.send-message {
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+.message-content {
+    @media (max-width: 768px) {
+        height: 4rem !important;
     }
 }
 
@@ -79,8 +136,13 @@
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
+    box-sizing: border-box;
 
     font-size: 1.5rem;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+    }
 }
 
 .message-input {
@@ -90,6 +152,10 @@
     input {
         flex: 1;
         margin-right: 10px;
+
+        @media (max-width: 768px) {
+            margin-right: 0px;
+        }
     }
 }
 

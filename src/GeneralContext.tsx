@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toggleKanjiDisplay } from "src/config/requests";
 
 const GeneralContextDefaultValue: GeneralContextType = {
   selectedWord: {
@@ -21,7 +22,7 @@ const GeneralContextDefaultValue: GeneralContextType = {
 type GeneralContextType = {
   selectedWord: SeparateElements;
   setSelectedWord: React.Dispatch<React.SetStateAction<SeparateElements>>;
-  selectKanji: (func: () => void, element: SeparateElements) => void; // Change this line
+  selectKanji: (toggleKanji: () => void, element: SeparateElements) => void; // Change this line
   toggleKanjiFunction: () => void;
   wordSeparation: number;
   setWordSeparation: React.Dispatch<React.SetStateAction<number>>;
@@ -45,8 +46,13 @@ export function GeneralProvider({ children }: Props) {
 
   const [toggleKanjiFunction, setToggleKanjiFunction] = useState<() => void>(() => { });
 
-  const selectKanji = (func: () => void, element: SeparateElements) => {
-    setToggleKanjiFunction(() => func);
+  const selectKanji = (toggleKanji: () => void, element: SeparateElements) => {
+    setToggleKanjiFunction(() => {
+      return () => {
+        toggleKanjiDisplay(element.kanji);
+        toggleKanji();
+      }
+    });
     setSelectedWord(element);
   };
 

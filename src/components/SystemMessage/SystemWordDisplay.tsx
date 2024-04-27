@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { GeneralContext } from 'src/GeneralContext';
-import { toggleKanjiDisplay } from "src/config/requests";
 import "src/components/SystemMessage/SystemWordDisplay.scss";
 
 interface SystemWordDisplayProps {
@@ -9,10 +8,10 @@ interface SystemWordDisplayProps {
 
 const SystemWordDisplay: React.FC<SystemWordDisplayProps> = ({ element }) => {
     const [showKanji, setShowKanji] = useState<boolean>(element.show_kanji);
-    console.log("rendered with showKanji: ", showKanji);
-    const handleKanjiToggle = () => {
-        toggleKanjiDisplay(element.kanji);
-        setShowKanji(!showKanji);
+
+    const toggleKanji = () => {
+        element.show_kanji = !element.show_kanji;
+        setShowKanji(element.show_kanji);
     };
 
     const { selectKanji, wordSeparation } = useContext(GeneralContext);
@@ -20,8 +19,9 @@ const SystemWordDisplay: React.FC<SystemWordDisplayProps> = ({ element }) => {
     if (element.is_word) {
         return (
             <div
+                key={Math.random()}
                 className='word-wrapper'
-                onClick={() => selectKanji(handleKanjiToggle, element)}
+                onClick={() => selectKanji(toggleKanji, element)}
                 style={{ cursor: 'pointer', marginRight: `${Number(wordSeparation) / 10}rem` }}
             >
                 {showKanji ?

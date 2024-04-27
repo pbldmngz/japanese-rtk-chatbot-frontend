@@ -73,7 +73,7 @@ const GeneralLayout: React.FC = () => {
                         <div className='half border'>{selectedWord.meaning}</div>
                     </div>
                     <div className='button-wrapper'>
-                        <button onClick={() => toggleKanjiFunction()}>Toggle Kanji</button>
+                        <button onClick={toggleKanjiFunction}>Toggle Kanji</button>
                     </div>
                 </div>
                 <div className="message-input">

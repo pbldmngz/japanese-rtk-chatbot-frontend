@@ -41,6 +41,7 @@ export function useGeneralLayout(): GeneralLayoutState {
     };
 
     const handleSendMessage = () => {
+        if (message === '') return;
         setMessageLog([...messageLog, {
             sender: "User",
             content: isHiragana ? message : wanakana.toHiragana(message)
@@ -55,5 +56,5 @@ export function useGeneralLayout(): GeneralLayoutState {
         }]);
     };
 
-    return { username, setUsername, proficiency, setProficiency, rtkLevel, setRtkLevel, message, setMessage, isHiragana, setIsHiragana, wordSeparation, setWordSeparation, messageLog, selectedWord, toggleKanjiFunction, handleSendMessage, handleEnterSendMessage, handleSystemMessage};
+    return { username, setUsername, proficiency, setProficiency, rtkLevel, setRtkLevel, message, setMessage, isHiragana, setIsHiragana, wordSeparation, setWordSeparation, messageLog, selectedWord, toggleKanjiFunction, handleSendMessage, handleEnterSendMessage, handleSystemMessage };
 }

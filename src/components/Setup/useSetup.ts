@@ -41,6 +41,10 @@ const useSetup = ({
 
     const [currentUser, setCurrentUser] = React.useState<User>({} as User);
 
+    if (!localStorage.getItem('username') || localStorage.getItem('username') === undefined) {
+        localStorage.clear();
+    }
+
     const handleButtonClick = () => {
         if (!currentUser?.username) {
             if (!username) {

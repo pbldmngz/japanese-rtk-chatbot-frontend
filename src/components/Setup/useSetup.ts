@@ -49,11 +49,11 @@ const useSetup = ({
             getUser(username).then(user => {
                 if (user) {
                     setCurrentUser(user);
-                    localStorage.setItem('username', JSON.stringify(user.username));
+                    localStorage.setItem('username', user.username);
                 } else {
                     createUser(username).then(user => {
                         setCurrentUser(user);
-                        localStorage.setItem('username', JSON.stringify(user.username));
+                        localStorage.setItem('username', user.username);
                     });
                 }
             });

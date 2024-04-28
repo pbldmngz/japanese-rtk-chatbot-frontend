@@ -52,8 +52,11 @@ export function GeneralProvider({ children }: Props) {
   const selectKanji = (toggleKanji: () => void, element: SeparateElements) => {
     setToggleKanjiFunction(() => {
       return () => {
-        toggleKanjiDisplay(element.kanji);
-        toggleKanji();
+        const currentUser = localStorage.getItem("username");
+        if (currentUser) {
+          toggleKanjiDisplay(currentUser, element.kanji);
+          toggleKanji();
+        }
       }
     });
     setSelectedWord(element);

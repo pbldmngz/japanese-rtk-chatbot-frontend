@@ -54,6 +54,8 @@ interface GeneralLayoutState {
     setRtkLevel: React.Dispatch<React.SetStateAction<number>>;
     message: string;
     setMessage: React.Dispatch<React.SetStateAction<string>>;
+    setMessageLog: React.Dispatch<React.SetStateAction<Message[]>>;
+    setSelectedWord: React.Dispatch<React.SetStateAction<SeparateElements>>;
     isHiragana: boolean;
     setIsHiragana: React.Dispatch<React.SetStateAction<boolean>>;
     wordSeparation: number;
@@ -64,4 +66,15 @@ interface GeneralLayoutState {
     handleSendMessage: () => void;
     handleEnterSendMessage: (event: React.KeyboardEvent<HTMLInputElement>) => void;
     handleSystemMessage: (message: string) => void;
+}
+
+interface User {
+    difficulty_level: number;
+    gpt_model: string;
+    input_mode: boolean;
+    known_kanjis: string[];
+    message_log: Message[];
+    rtk_level: number;
+    username: string;
+    word_spacing: number;
 }

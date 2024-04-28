@@ -5,7 +5,7 @@ import "src/components/ChatWindow/ChatWindow.scss";
 
 
 const ChatWindow: React.FC<ChatWindowProps> = ({ messageLog, handleSystemMessage, userProperties }) => {
-    const { username, proficiency, rtkLevel } = userProperties;
+    const { username } = userProperties;
     const [systemMessageProperties, setSystemMessageProperties] = useState<SystemResponse[]>([]);
     const [awaitingResponse, setAwaitingResponse] = useState(false);
 
@@ -14,7 +14,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ messageLog, handleSystemMessage
             const lastMessage = messageLog[messageLog.length - 1];
             if (lastMessage.sender === 'User') {
                 setAwaitingResponse(true);
-                Talk(proficiency, rtkLevel, username, lastMessage.content).then(response => {
+                Talk(username, lastMessage.content).then(response => {
                     setAwaitingResponse(false);
                     handleSystemMessage(systemMessageProperties.length.toString());
                     setSystemMessageProperties([...systemMessageProperties, response]);

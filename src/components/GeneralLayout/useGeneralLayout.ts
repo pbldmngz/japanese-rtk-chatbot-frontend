@@ -5,15 +5,15 @@ import * as wanakana from 'wanakana';
 
 
 export function useGeneralLayout(): GeneralLayoutState {
-    const [username, setUsername] = useState('Test User');
+    const [username, setUsername] = useState('');
     const [proficiency, setProficiency] = useState(0);
-    const [rtkLevel, setRtkLevel] = useState(900);
+    const [rtkLevel, setRtkLevel] = useState(0);
     const [isHiragana, setIsHiragana] = useState(false);
 
     const [message, setMessage] = useState('');
     const [messageLog, setMessageLog] = useState([] as Message[]);
 
-    const { selectedWord, toggleKanjiFunction, wordSeparation, setWordSeparation } = useContext(GeneralContext);
+    const { selectedWord, setSelectedWord, toggleKanjiFunction, wordSeparation, setWordSeparation } = useContext(GeneralContext);
 
     const handleEnterSendMessage = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
@@ -37,5 +37,5 @@ export function useGeneralLayout(): GeneralLayoutState {
         }]);
     };
 
-    return { username, setUsername, proficiency, setProficiency, rtkLevel, setRtkLevel, message, setMessage, isHiragana, setIsHiragana, wordSeparation, setWordSeparation, messageLog, selectedWord, toggleKanjiFunction, handleSendMessage, handleEnterSendMessage, handleSystemMessage };
+    return { username, setUsername, proficiency, setProficiency, rtkLevel, setRtkLevel, message, setMessage, isHiragana, setIsHiragana, wordSeparation, setWordSeparation, messageLog, selectedWord, setMessageLog, setSelectedWord, toggleKanjiFunction, handleSendMessage, handleEnterSendMessage, handleSystemMessage };
 }

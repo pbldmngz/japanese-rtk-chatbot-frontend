@@ -1,6 +1,7 @@
 import ChatWindow from 'src/components/ChatWindow/ChatWindow';
 import './GeneralLayout.scss';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 interface GeneralLayoutProps {
     layoutHook: GeneralLayoutState;
@@ -21,6 +22,12 @@ const GeneralLayout: React.FC<GeneralLayoutProps> = ({ layoutHook }) => {
         handleSystemMessage,
     } = layoutHook;
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!localStorage.getItem('username')) {
+            navigate('/setup');
+        }
+    }, []);
 
     return (
         <div className="container">

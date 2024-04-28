@@ -20,9 +20,9 @@ api.interceptors.request.use(
     }
 );
 
-export const Talk = async (difficulty_level: number, rtk_level: number, session_id: string, user_input: string) => {
+export const Talk = async (username: string, user_input: string) => {
     const result = await api
-        .post(`/chat/${difficulty_level}/${rtk_level}/${session_id}`, { user_input })
+        .post(`/chat/${username}`, { user_input })
         .then((res) => {
             return res.data;
         })
@@ -33,14 +33,53 @@ export const Talk = async (difficulty_level: number, rtk_level: number, session_
     return result;
 };
 
-export const toggleKanjiDisplay = async (kanji: string) => {
+export const toggleKanjiDisplay = async (username: string, kanji: string) => {
     const result = await api
-        .get(`/word/${kanji}`)
+        .get(`/word/${username}/${kanji}`)
         .then((res) => {
             return res.data;
         })
         .catch((err) => {
             console.log("toggle kanji display error", err);
+            return false;
+        });
+    return result;
+};
+
+export const getUser = async (username: string) => {
+    const result = await api
+        .get(`/user/${username}`)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            console.log("get user error", err);
+            return false;
+        });
+    return result as User;
+};
+
+export const createUser = async (username: string) => {
+    const result = await api
+        .post(`/user`, { username })
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            console.log("create user error", err);
+            return false;
+        });
+    return result;
+};
+
+export const updateUser = async (username: string, userAtrributes: any) => {
+    const result = await api
+        .put(`/user/${username}`, userAtrributes)
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            console.log("update user error", err);
             return false;
         });
     return result;

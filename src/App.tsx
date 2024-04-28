@@ -20,7 +20,7 @@ function App() {
           <GeneralLayout layoutHook={layoutHook} />
         }
       />
-      <Route path="*" element={<Navigate to="/chat" />} />
+      <Route path="*" element={<Navigate to="/setup" />} />
     </Routes>
   );
 }

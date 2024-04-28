@@ -14,25 +14,35 @@ const SystemWordDisplay: React.FC<SystemWordDisplayProps> = ({ element }) => {
         setShowKanji(element.show_kanji);
     };
 
-    const { selectKanji, wordSeparation } = useContext(GeneralContext);
+    const { selectKanji, wordSeparation, selectedWord } = useContext(GeneralContext);
 
     if (element.is_word) {
         return (
             <div
                 key={Math.random()}
-                className='word-wrapper'
+                className={`word-wrapper ${selectedWord.kanji === element.kanji ? 'word-is-selected' : ''}`}
                 onClick={() => selectKanji(toggleKanji, element)}
                 style={{ cursor: 'pointer', marginRight: `${Number(wordSeparation) / 10}rem` }}
             >
                 {showKanji ?
-                    element.kanji.split('').map((char, index) =>
-                        <div key={index} className={element.known_kanji.includes(char) ? "is-known-kanji" : "is-unknown-kanji"}>
-                            {char}
-                        </div>
-                    )
+                    element.kanji.split('').map((char, index) => {
+                        let className = 'no-kanji-character';
+
+                        if (element.known_kanji.includes(char)) {
+                            className = 'is-known-kanji';
+                        } else if (element.unknown_kanji.includes(char)) {
+                            className = 'is-unknown-kanji';
+                        }
+
+                        return (
+                            <div key={index} className={className}>
+                                {char}
+                            </div>
+                        );
+                    })
                     :
-                    element.hiragana.split('').map((char, index) =>
-                        <div key={index}>
+                    (element.contains_no_kanji ? element.kanji : element.hiragana).split('').map((char, index) =>
+                        <div key={index} className='no-kanji-character'>
                             {char}
                         </div>
                     )

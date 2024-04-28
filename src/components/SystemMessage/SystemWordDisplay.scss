@@ -2,6 +2,14 @@
     display: flex;
     color: white;
     margin-right: 1rem;
+
+    .is-known-kanji {
+        color: lightgreen;
+    }
+
+    .is-unknown-kanji {
+        color: red;
+    }
 }
 
 .character-wrapper {
@@ -10,10 +18,25 @@
     margin-right: 1rem;
 }
 
-.is-known-kanji {
-    color: red;
-}
 
-.is-unknown-kanji {
-    color: lightgreen;
+
+.word-is-selected {
+    color: white;
+    background-color: #4CAF50;
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.3rem;
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+
+    .is-known-kanji {
+        color: white;
+    }
+
+    .is-unknown-kanji {
+        color: black;
+    }
+
+    .no-kanji-character {
+        color: white;
+    }
 }

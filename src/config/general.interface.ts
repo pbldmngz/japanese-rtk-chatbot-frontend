@@ -23,6 +23,9 @@ type SeparateElements = {
     meaning: string;
     show_kanji: boolean;
     known_kanji: string[];
+    unknown_kanji: string[];
+    known_rtk_kanji: string[];
+    contains_no_kanji: boolean;
 };
 
 type Message = {

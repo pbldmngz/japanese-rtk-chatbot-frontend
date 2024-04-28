@@ -1,19 +1,20 @@
 import { useRef, useEffect } from 'react';
 import SystemMessage from 'src/components/SystemMessage/SystemMessage';
 import "src/components/ChatMessage/ChatMessage.scss";
+import "src/components/SystemMessage/SystemMessage.scss";
 
 interface ChatMessageProps {
-    message: {
+    message?: {
         sender: string;
         content: string;
     };
-    index: number;
+    index?: number;
     systemMessage?: SystemResponse;
-    lastElement: boolean;
+    lastElement?: boolean;
+    waiting?: boolean;
 }
 
-const ChatMessage: React.FC<ChatMessageProps> = ({ message, lastElement, index, systemMessage }) => {
-
+const ChatMessage: React.FC<ChatMessageProps> = ({ message, lastElement = true, index, systemMessage, waiting = false }) => {
     const endRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -26,6 +27,18 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, lastElement, index, 
             }, 0);
         }
     }, [lastElement]);
+
+    if (waiting) {
+        return (
+            <div className='system-message-wrapper'>
+                <div className="system-message">
+                    <span className="dot-1">.</span>
+                    <span className="dot-2">.</span>
+                    <span className="dot-3">.</span>
+                </div>
+            </div>
+        );
+    }
 
     if (!message) {
         return null;

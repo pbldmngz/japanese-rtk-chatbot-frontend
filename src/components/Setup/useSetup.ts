@@ -94,8 +94,8 @@ const useSetup = ({
     }, [currentUser]);
 
     useEffect(() => {
-        if (localStorage.getItem('username')) {
-            const username = JSON.parse(localStorage.getItem('username') as string);
+        const username = localStorage.getItem('username') || '';
+        if (!!username) {
             getUser(username).then(user => {
                 if (user) {
                     setCurrentUser(user);

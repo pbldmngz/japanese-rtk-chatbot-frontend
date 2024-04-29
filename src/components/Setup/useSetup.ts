@@ -62,6 +62,7 @@ const useSetup = ({
                 }
             });
         } else {
+
             const changes = {
                 rtk_level: rtkLevel,
                 word_spacing: wordSeparation,

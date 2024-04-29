@@ -1,5 +1,6 @@
 import "src/components/Setup/Setup.scss";
 import useSetup from './useSetup';
+import { useEffect, useState } from "react";
 
 
 interface GeneralLayoutProps {
@@ -35,6 +36,27 @@ const Setup: React.FC<GeneralLayoutProps> = ({ layoutHook }) => {
         }
     );
 
+    const [temporalRtkLevel, setTemporalRtkLevel] = useState<number | string>(rtkLevel);
+    const [temporalWordSeparation, setTemporalWordSeparation] = useState<number | string>(wordSeparation);
+
+    useEffect(() => {
+        if (rtkLevel !== temporalRtkLevel
+            && !!temporalRtkLevel
+            && typeof (temporalRtkLevel) === "number"
+        ) {
+            setRtkLevel(temporalRtkLevel);
+        }
+    }, [temporalRtkLevel]);
+
+    useEffect(() => {
+        if (wordSeparation !== temporalWordSeparation
+            && !!temporalWordSeparation
+            && typeof (temporalWordSeparation) === "number"
+        ) {
+            setWordSeparation(temporalWordSeparation);
+        }
+    }, [temporalWordSeparation]);
+
     return (
         <div className="setup">
             {!currentUser?.username && <h1 className="option-row" style={{ textAlign: "center" }} >Welcome to the chatbot!</h1>}
@@ -60,13 +82,13 @@ const Setup: React.FC<GeneralLayoutProps> = ({ layoutHook }) => {
             {currentUser?.username && (
                 <div className="option-row">
                     <label>RTK Level (your current kanji #):</label>
-                    <input type="number" min="0" max="3000" value={rtkLevel || ''} onChange={e => setRtkLevel(e.target.value ? Number(e.target.value) : '')} />
+                    <input type="number" min="0" max="3000" value={temporalRtkLevel} onChange={e => setTemporalRtkLevel(e.target.value ? Number(e.target.value) : '')} />
                 </div>
             )}
             {currentUser?.username && (
                 <div className="option-row">
                     <label>Word spacing (real Japanese is 0):</label>
-                    <input type="number" min="0" max="20" value={wordSeparation || ''} onChange={e => setWordSeparation(e.target.value ? Number(e.target.value) : '')} />
+                    <input type="number" min="0" max="20" value={temporalWordSeparation} onChange={e => setTemporalWordSeparation(e.target.value ? Number(e.target.value) : '')} />
                 </div>
             )}
             {currentUser?.username && (

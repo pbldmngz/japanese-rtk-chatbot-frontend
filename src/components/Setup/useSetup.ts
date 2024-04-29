@@ -41,7 +41,7 @@ const useSetup = ({
 
     const [currentUser, setCurrentUser] = React.useState<User>({} as User);
 
-    if (!localStorage.getItem('username') || localStorage.getItem('username') === undefined) {
+    if (!localStorage.getItem('username') || localStorage.getItem('username') === undefined || localStorage.getItem('username') === null || localStorage.getItem('username') === "" || localStorage.getItem('username') === "undefined" || localStorage.getItem('username') === "null") {
         localStorage.clear();
     }
 

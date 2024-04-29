@@ -60,13 +60,13 @@ const Setup: React.FC<GeneralLayoutProps> = ({ layoutHook }) => {
             {currentUser?.username && (
                 <div className="option-row">
                     <label>RTK Level (your current kanji #):</label>
-                    <input type="number" min="0" max="3000" value={rtkLevel} onChange={e => setRtkLevel(Number(e.target.value))} />
+                    <input type="number" min="0" max="3000" value={rtkLevel || ''} onChange={e => setRtkLevel(e.target.value ? Number(e.target.value) : '')} />
                 </div>
             )}
             {currentUser?.username && (
                 <div className="option-row">
                     <label>Word spacing (real Japanese is 0):</label>
-                    <input type="number" min="0" max="20" value={wordSeparation} onChange={e => setWordSeparation(Number(e.target.value))} />
+                    <input type="number" min="0" max="20" value={wordSeparation || ''} onChange={e => setWordSeparation(e.target.value ? Number(e.target.value) : '')} />
                 </div>
             )}
             {currentUser?.username && (
